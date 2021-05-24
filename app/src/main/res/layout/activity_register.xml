@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="@drawable/main_background"
+
+    android:padding="20dp"
+    android:visibility="visible"
+    tools:context=".Register">
+
+    <TextView
+        android:id="@+id/reg_appname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/merriweather_sans_extrabold"
+        android:gravity="center"
+        android:text="@string/app_name"
+        android:textSize="25sp" />
+
+    <EditText
+        android:id="@+id/reg_firstname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/reg_appname"
+        android:layout_marginTop="5dp"
+        android:ems="10"
+        android:fontFamily="@font/quicksand_bold"
+        android:hint="First name"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/reg_lastname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/reg_firstname"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:fontFamily="@font/quicksand_bold"
+        android:hint="Last name"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/reg_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/reg_lastname"
+
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:fontFamily="@font/quicksand_bold"
+        android:hint="E-mail address"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/reg_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/reg_email"
+
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:fontFamily="@font/quicksand_bold"
+        android:hint="Password"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/reg_reenterpassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/reg_password"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:fontFamily="@font/quicksand_bold"
+        android:hint="Re-Enter Password"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/register_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/reg_reenterpassword"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/quicksand_bold"
+        android:text="Register" />
+
+
+</RelativeLayout>
