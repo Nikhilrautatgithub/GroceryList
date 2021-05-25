@@ -105,9 +105,10 @@ public class Register extends AppCompatActivity {
 
                                             Toast.makeText(Register.this, "User added", Toast.LENGTH_SHORT).show();
                                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                                            onDestroy();
+
                                             Toast.makeText(getApplicationContext(), "Successfully logged in", Toast.LENGTH_SHORT).show();
                                             mDialog.dismiss();
+                                            //onDestroy();
                                         }
                                     })
                                     .addOnFailureListener(new OnFailureListener() {
@@ -135,7 +136,7 @@ public class Register extends AppCompatActivity {
             public void onClick(View view) {
                 Log.d("Register act", "intent to Login activity");
                 startActivity(new Intent(getApplicationContext(),Login.class));
-                onDestroy();
+                //onDestroy();
             }
         });
 

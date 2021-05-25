@@ -76,10 +76,11 @@ public class Login extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                            onDestroy();
+
                             Toast.makeText(getApplicationContext(), "Successful", Toast.LENGTH_SHORT).show();
 
                             mDialog.dismiss();
+                            //onDestroy();
                         } else {
 
                             Toast.makeText(getApplicationContext(), "Failed.", Toast.LENGTH_SHORT).show();
@@ -97,7 +98,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), Register.class));
-                onDestroy();
+                //onDestroy();
             }
         });
 
