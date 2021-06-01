@@ -4,21 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/groceryitemid"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="10">
 
-    </EditText>
+        <EditText
+            android:id="@+id/groceryitemid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="8"
+            android:fontFamily="@font/merriweather_sans_extrabold"
+            android:hint="Item name" />
+
+        <EditText
+            android:id="@+id/quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:fontFamily="@font/merriweather_sans_extrabold"
+            android:hint="Qty"
+            android:inputType="numberDecimal" />
+    </LinearLayout>
+
     <Button
         android:id="@+id/add_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add item"
-        ></Button>
+        android:text="Add item"/>
 
     <ListView
         android:id="@+id/listview"

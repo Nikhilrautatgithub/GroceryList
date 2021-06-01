@@ -71,6 +71,10 @@ public class Login extends AppCompatActivity {
                 mDialog.setMessage("Processing..");
                 mDialog.show();
 
+                Intent intentTomain = new Intent(getApplicationContext(), MainActivity.class);
+                intentTomain.putExtra("email",mEmail);
+                startActivity(intentTomain);
+                /*
                 mAuth.signInWithEmailAndPassword(mEmail, mPass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -90,7 +94,7 @@ public class Login extends AppCompatActivity {
                         }
 
                     }
-                });
+                });*/
 
 
             }
