@@ -96,6 +96,7 @@ public class Register extends AppCompatActivity {
                             userdetails.put("Email", mEmail);
                             userdetails.put("First Name", mFname);
                             userdetails.put("Last Name", mLname);
+                            //userdetails.put("List",);
 
                             db.collection("users").document(mEmail).set(userdetails)
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
