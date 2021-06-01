@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:text="@string/app_name"
         android:fontFamily="@font/quicksand_bold"
-        android:textSize="50sp"
+        android:textSize="30sp"
         android:gravity="center"
         android:padding="10sp"
         />
