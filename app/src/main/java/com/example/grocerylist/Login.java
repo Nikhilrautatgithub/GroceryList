@@ -42,9 +42,7 @@ public class Login extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), Login.class));
         }
 
-
         mDialog = new ProgressDialog(this);
-
 
         email = findViewById(R.id.login_email);
         pass = findViewById(R.id.login_pass);
@@ -71,16 +69,12 @@ public class Login extends AppCompatActivity {
                 mDialog.setMessage("Processing..");
                 mDialog.show();
 
-                Intent intentTomain = new Intent(getApplicationContext(), MainActivity.class);
-                intentTomain.putExtra("email",mEmail);
-                startActivity(intentTomain);
-                /*
                 mAuth.signInWithEmailAndPassword(mEmail, mPass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Intent intentTomain = new Intent(getApplicationContext(), MainActivity.class);
-                            intentTomain.putExtra("email",mEmail);
+                            intentTomain.putExtra("email", mEmail);
                             startActivity(intentTomain);
 
                             Toast.makeText(getApplicationContext(), "Successful", Toast.LENGTH_SHORT).show();
@@ -94,9 +88,7 @@ public class Login extends AppCompatActivity {
                         }
 
                     }
-                });*/
-
-
+                });
             }
         });
 
@@ -104,9 +96,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), Register.class));
-                //onDestroy();
             }
         });
-
     }
 }

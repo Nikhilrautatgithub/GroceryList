@@ -29,7 +29,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    ListView  list_view;
+    ListView list_view;
     private FirebaseFirestore db;
 
     @Override
@@ -42,15 +42,15 @@ public class MainActivity extends AppCompatActivity {
         String emailid;
         Intent it = getIntent();
         emailid = it.getStringExtra("email");
-        list_view=(ListView)findViewById(R.id.listview);
-        addItem=(Button)findViewById(R.id.add_item);
-        grocery=(EditText)findViewById(R.id.groceryitemid);
-        qty = (EditText)findViewById(R.id.quantity);
+        list_view = (ListView) findViewById(R.id.listview);
+        addItem = (Button) findViewById(R.id.add_item);
+        grocery = (EditText) findViewById(R.id.groceryitemid);
+        qty = (EditText) findViewById(R.id.quantity);
         db = FirebaseFirestore.getInstance();
 
-        ArrayList<String> arrayList=new ArrayList<>();
+        ArrayList<String> arrayList = new ArrayList<>();
 
-        ArrayAdapter arrayAdapter=new ArrayAdapter(this, android.R.layout.simple_list_item_1,arrayList);
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arrayList);
         list_view.setAdapter(arrayAdapter);
         List<String> items = new ArrayList<>();
 
@@ -58,24 +58,21 @@ public class MainActivity extends AppCompatActivity {
         db.collection("users").document(emailid).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull @NotNull Task<DocumentSnapshot> task) {
-                if(task.isSuccessful()){
+                if (task.isSuccessful()) {
                     DocumentSnapshot documentSnapshot = task.getResult();
-                    if(documentSnapshot.exists()){
-                        if(documentSnapshot.get("List")!=null) {
+                    if (documentSnapshot.exists()) {
+                        if (documentSnapshot.get("List") != null) {
                             HashMap<String, Object> hm = new HashMap<>();
                             List<String> li = new ArrayList<>();
                             hm = (HashMap<String, Object>) documentSnapshot.get("List");
                             li = (List<String>) hm.get("Grocery Items List");
-                            //List<Array> li = new ArrayList<>();
-                            if(!li.isEmpty()) {
-                                //items.add(documentSnapshot.get("List").toString());
+                            if (!li.isEmpty()) {
                                 for (int i = 0; i < li.size(); i++) {
                                     arrayList.add(li.get(i));
                                     arrayAdapter.notifyDataSetChanged();
                                     items.add(li.get(i));
                                     Log.d("READ", li.get(i));
                                 }
-                                //Log.d("READ", documentSnapshot.get("List").toString());
                             }
                         }
                     }
@@ -87,28 +84,24 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 HashMap<String, Object> data = new HashMap<>();
-                items.add(grocery.getText().toString().trim()+" : "+qty.getText().toString().trim());
-                if(!TextUtils.isEmpty(grocery.getText().toString())) {
-                    arrayList.add(grocery.getText().toString().trim()+" : "+qty.getText().toString().trim());
+                items.add(grocery.getText().toString().trim() + " : " + qty.getText().toString().trim());
+                if (!TextUtils.isEmpty(grocery.getText().toString())) {
+                    arrayList.add(grocery.getText().toString().trim() + " : " + qty.getText().toString().trim());
                     arrayAdapter.notifyDataSetChanged();
-                    data.put("Grocery Items List",items);
-                    //db.collection("users").document(emailid).update(data);
+                    data.put("Grocery Items List", items);
                     db.collection("users").document(emailid).update("List", data);
                     grocery.setText("");
                     qty.setText("");
-                }
-                else{
+                } else {
                     grocery.setError("Grocery item not mentioned");
                 }
-
-
             }
         });
         list_view.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                final int which_item=i;
+                final int which_item = i;
                 new AlertDialog.Builder(MainActivity.this).setIcon(android.R.drawable.ic_delete).setTitle("Are you Sure")
                         .setMessage("Do you want remove this item?").setPositiveButton("yes", new DialogInterface.OnClickListener() {
                     @Override
@@ -117,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
                         arrayAdapter.notifyDataSetChanged();
                     }
                 })
-                        .setNegativeButton("No",null)
+                        .setNegativeButton("No", null)
                         .show();
                 return true;
             }

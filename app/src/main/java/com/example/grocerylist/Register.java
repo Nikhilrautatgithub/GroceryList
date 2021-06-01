@@ -89,14 +89,10 @@ public class Register extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-
-                            Log.d("Register act", "User created");
-
                             HashMap<String, Object> userdetails = new HashMap<>();
                             userdetails.put("Email", mEmail);
                             userdetails.put("First Name", mFname);
                             userdetails.put("Last Name", mLname);
-                            //userdetails.put("List",);
 
                             db.collection("users").document(mEmail).set(userdetails)
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -106,12 +102,11 @@ public class Register extends AppCompatActivity {
 
                                             Toast.makeText(Register.this, "User added", Toast.LENGTH_SHORT).show();
                                             Intent intentTomain = new Intent(getApplicationContext(), MainActivity.class);
-                                            intentTomain.putExtra("email",mEmail);
+                                            intentTomain.putExtra("email", mEmail);
                                             startActivity(intentTomain);
 
                                             Toast.makeText(getApplicationContext(), "Successfully logged in", Toast.LENGTH_SHORT).show();
                                             mDialog.dismiss();
-                                            //onDestroy();
                                         }
                                     })
                                     .addOnFailureListener(new OnFailureListener() {
@@ -130,16 +125,13 @@ public class Register extends AppCompatActivity {
                         }
                     }
                 });
-
-
             }
         });
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.d("Register act", "intent to Login activity");
-                startActivity(new Intent(getApplicationContext(),Login.class));
-                //onDestroy();
+                startActivity(new Intent(getApplicationContext(), Login.class));
             }
         });
 
