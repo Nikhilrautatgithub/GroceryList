@@ -13,11 +13,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,18 +45,23 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayAdapter arrayAdapter=new ArrayAdapter(this, android.R.layout.simple_list_item_1,arrayList);
         list_view.setAdapter(arrayAdapter);
+        List<String> items = new ArrayList<>();
+
+
+
+
 
         addItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                HashMap<String,String> data = new HashMap<>();
-
+                HashMap<String,Object> data = new HashMap<>();
+                items.add(grocery.getText().toString());
                 if(!grocery.toString().isEmpty()) {
                     arrayList.add(grocery.getText().toString().trim());
                     arrayAdapter.notifyDataSetChanged();
-                    data.put("List",grocery.getText().toString());
+                    data.put("List",items);
                     //db.collection("users").document(emailid).update(data);
-                    db.collection("users").document(emailid).update("List", FieldValue.arrayUnion(grocery.getText().toString()));
+                    db.collection("users").document(emailid).update("List", data);
                     grocery.setText("");
                 }
                 else{

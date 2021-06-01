@@ -28,6 +28,7 @@
         android:layout_below="@id/GroceryList"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/quicksand_bold"
+        android:text="nik@gmail.com"
         android:hint="E-mail address"
         android:inputType="textEmailAddress" />
 
@@ -37,6 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/login_email"
         android:layout_marginTop="20dp"
+        android:text="123456"
         android:fontFamily="@font/quicksand_bold"
         android:hint="Password"
         android:inputType="textPassword" />
