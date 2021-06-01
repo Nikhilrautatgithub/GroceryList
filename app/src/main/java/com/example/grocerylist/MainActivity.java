@@ -45,13 +45,13 @@ public class MainActivity extends AppCompatActivity {
         addItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                HashMap<String,Object> data = new HashMap<>();
+                HashMap<String,String> data = new HashMap<>();
 
                 if(!grocery.toString().isEmpty()) {
                     arrayList.add(grocery.getText().toString().trim());
                     arrayAdapter.notifyDataSetChanged();
                     grocery.setText("");
-                    data.put("List",grocery.toString());
+                    data.put("List",grocery.toString().trim());
                     db.collection("users").document(emailid).set(data);
                 }
                 else{
