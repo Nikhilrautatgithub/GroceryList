@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -12,11 +13,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
     ListView  list_view;
+    private FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,10 +29,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Button addItem;
         EditText grocery;
-
+        String emailid;
+        Intent it = getIntent();
+        emailid = it.getStringExtra("email");
         list_view=(ListView)findViewById(R.id.listview);
         addItem=(Button)findViewById(R.id.add_item);
         grocery=(EditText)findViewById(R.id.edittext);
+        db = FirebaseFirestore.getInstance();
 
         ArrayList<String> arrayList=new ArrayList<>();
 
@@ -37,10 +45,19 @@ public class MainActivity extends AppCompatActivity {
         addItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                HashMap<String,Object> data = new HashMap<>();
 
-                arrayList.add(grocery.getText().toString().trim());
-                arrayAdapter.notifyDataSetChanged();
-                grocery.setText("");
+                if(!grocery.toString().isEmpty()) {
+                    arrayList.add(grocery.getText().toString().trim());
+                    arrayAdapter.notifyDataSetChanged();
+                    grocery.setText("");
+                    data.put("List",grocery.toString());
+                    db.collection("users").document(emailid).set(data);
+                }
+                else{
+                    grocery.setError("Grocery item not mentioned");
+                }
+
 
             }
         });

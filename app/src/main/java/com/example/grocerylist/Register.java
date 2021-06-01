@@ -104,7 +104,9 @@ public class Register extends AppCompatActivity {
                                             Log.d("Register act", "User details added");
 
                                             Toast.makeText(Register.this, "User added", Toast.LENGTH_SHORT).show();
-                                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                            Intent intentTomain = new Intent(getApplicationContext(), MainActivity.class);
+                                            intentTomain.putExtra("email",mEmail);
+                                            startActivity(intentTomain);
 
                                             Toast.makeText(getApplicationContext(), "Successfully logged in", Toast.LENGTH_SHORT).show();
                                             mDialog.dismiss();
