@@ -46,14 +46,14 @@ public class MainActivity extends AppCompatActivity {
         addItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //HashMap<String,String> data = new HashMap<>();
+                HashMap<String,String> data = new HashMap<>();
 
                 if(!grocery.toString().isEmpty()) {
                     arrayList.add(grocery.getText().toString().trim());
                     arrayAdapter.notifyDataSetChanged();
-                    //data.put();
-                    db.collection("users").document(emailid).update("List",grocery.getText().toString());
-                    //db.collection("users").document(emailid).update("List", FieldValue.arrayUnion(grocery.getText().toString());
+                    data.put("List",grocery.getText().toString());
+                    //db.collection("users").document(emailid).update(data);
+                    db.collection("users").document(emailid).update("List", FieldValue.arrayUnion(grocery.getText().toString()));
                     grocery.setText("");
                 }
                 else{
