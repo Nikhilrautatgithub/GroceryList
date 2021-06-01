@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
@@ -52,7 +53,8 @@ public class MainActivity extends AppCompatActivity {
                     arrayAdapter.notifyDataSetChanged();
                     grocery.setText("");
                     //data.put();
-                    db.collection("users").document(emailid).update("List",grocery.getText().toString().trim());
+                    db.collection("users").document(emailid).update("List", FieldValue.arrayUnion(grocery.getText().toString()
+                    ));
                 }
                 else{
                     grocery.setError("Grocery item not mentioned");
