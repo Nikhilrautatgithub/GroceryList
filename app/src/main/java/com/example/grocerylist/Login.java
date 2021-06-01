@@ -77,13 +77,13 @@ public class Login extends AppCompatActivity {
                             intentTomain.putExtra("email", mEmail);
                             startActivity(intentTomain);
 
-                            Toast.makeText(getApplicationContext(), "Successful", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Successfully Logged in", Toast.LENGTH_SHORT).show();
 
                             mDialog.dismiss();
                             //onDestroy();
                         } else {
 
-                            Toast.makeText(getApplicationContext(), "Failed.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Login Failed", Toast.LENGTH_SHORT).show();
                             mDialog.dismiss();
                         }
 
