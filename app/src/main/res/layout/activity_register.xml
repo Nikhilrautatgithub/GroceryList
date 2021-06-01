@@ -30,7 +30,6 @@
         android:layout_below="@id/reg_appname"
         android:layout_marginTop="5dp"
         android:ems="10"
-        android:text="first name yaha"
         android:fontFamily="@font/quicksand_bold"
         android:hint="First name"
         android:inputType="textPersonName" />
@@ -38,7 +37,6 @@
     <EditText
         android:id="@+id/reg_lastname"
         android:layout_width="match_parent"
-        android:text="last name yaha"
         android:layout_height="wrap_content"
         android:layout_below="@id/reg_firstname"
         android:layout_marginTop="15dp"
@@ -52,7 +50,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/reg_lastname"
-        android:text="a@gmail.com"
         android:layout_marginTop="15dp"
         android:ems="10"
         android:fontFamily="@font/quicksand_bold"
@@ -64,7 +61,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/reg_email"
-        android:text="12345678poi"
         android:layout_marginTop="15dp"
         android:ems="10"
         android:fontFamily="@font/quicksand_bold"
@@ -78,7 +74,6 @@
         android:layout_below="@id/reg_password"
         android:layout_marginTop="15dp"
         android:ems="10"
-        android:text="12345678poi"
         android:fontFamily="@font/quicksand_bold"
         android:hint="Re-Enter Password"
         android:inputType="textPassword" />

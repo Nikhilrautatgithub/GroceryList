@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                     arrayAdapter.notifyDataSetChanged();
                     grocery.setText("");
                     //data.put();
-                    db.collection("users").document(emailid).update("List",grocery.toString().trim());
+                    db.collection("users").document(emailid).update("List",grocery.getText().toString().trim());
                 }
                 else{
                     grocery.setError("Grocery item not mentioned");
