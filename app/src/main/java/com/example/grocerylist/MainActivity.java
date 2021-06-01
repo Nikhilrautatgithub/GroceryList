@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         emailid = it.getStringExtra("email");
         list_view=(ListView)findViewById(R.id.listview);
         addItem=(Button)findViewById(R.id.add_item);
-        grocery=(EditText)findViewById(R.id.edittext);
+        grocery=(EditText)findViewById(R.id.groceryitemid);
         db = FirebaseFirestore.getInstance();
 
         ArrayList<String> arrayList=new ArrayList<>();
@@ -51,10 +51,10 @@ public class MainActivity extends AppCompatActivity {
                 if(!grocery.toString().isEmpty()) {
                     arrayList.add(grocery.getText().toString().trim());
                     arrayAdapter.notifyDataSetChanged();
-                    grocery.setText("");
                     //data.put();
-                    db.collection("users").document(emailid).update("List", FieldValue.arrayUnion(grocery.getText().toString()
-                    ));
+                    db.collection("users").document(emailid).update("List",grocery.getText().toString());
+                    //db.collection("users").document(emailid).update("List", FieldValue.arrayUnion(grocery.getText().toString());
+                    grocery.setText("");
                 }
                 else{
                     grocery.setError("Grocery item not mentioned");
