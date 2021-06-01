@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
                 arrayList.add(grocery.getText().toString().trim());
                 arrayAdapter.notifyDataSetChanged();
+                grocery.setText("");
 
             }
         });
